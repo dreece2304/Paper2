@@ -2,38 +2,50 @@
 Global configuration constants shared across all figure and analysis notebooks.
 """
 
-import matplotlib.pyplot as plt
+from matplotlib import cm
+import seaborn as sns
 
-# --- Organics: Ordered list for panels and plots ---
-organics = ['MPD', 'EG', 'THB', 'BTY', 'DHB', 'CB']
+# --- Organics: ordered for all figures ---
+organics = ['EG', 'CB', 'BTY', 'THB', 'MPD', 'DHB']
 
-# --- Inorganics: General metal labels (used where direct metals are listed) ---
-inorganics = ['Al', 'Zn']  # Used for general analysis; actual precursors are TMA and DEZ
-
+# --- Solvents (exact names from data, ordered logically) ---
 solvent_order = [
-    'HCl', 'KOH',    # Aqueous acid/base
-    'Water',         # Neutral aqueous
-    'Ethanol',       # Polar protic
-    'Acetone',       # Polar aprotic
-    'Chloroform',    # Nonpolar
-    'Toluene'        # Nonpolar
+    '0.01 M HCl',
+    '0.1 M KOH',
+    'Water',
+    'Ethanol',
+    'Acetone',
+    'Chloroform',
+    'Toluene'
 ]
 
+# --- Inorganics used in summary / axis titles ---
+inorganics = ['Al', 'Zn']  # Based on TMA and DEZ precursors
 
-# --- Color Map Settings: Viridis colormap with assignments per condition ---
-cmap = plt.get_cmap('viridis')
+# For heatmap
+cmap_choice = cm.viridis  # actual matplotlib colormap
 
-# You can adjust these colors as needed (or make conditional color logic in your notebook)
+# For barplot
+bar_palette_solvents = sns.color_palette("viridis", n_colors=len(solvent_order))
+bar_palette_organics = sns.color_palette("mako", n_colors=len(organics))
+
+# --- Color mapping if needed for UV/as-deposited variants ---
 colors = {
-    ('Al', False): cmap(0.2),   # Al-based, as-deposited
-    ('Al', True):  cmap(0.5),   # Al-based, UV-treated
-    ('Zn', False): cmap(0.8),   # Zn-based, as-deposited
-    ('Zn', True):  cmap(0.95),  # Zn-based, UV-treated
+    ('Al', False): cmap_choice(0.2),
+    ('Al', True):  cmap_choice(0.5),
+    ('Zn', False): cmap_choice(0.8),
+    ('Zn', True):  cmap_choice(0.95),
 }
 
-# --- Figure Sizing Constants ---
-cm2in = 1 / 2.54                      # Conversion factor from centimeters to inches
-full_width_cm = 18                   # Full manuscript figure width (common journal standard)
-aspect_ratio_standard = 4 / 3        # Landscape default
-aspect_ratio_tall = 2 / 3            # Tall figure layout (e.g. 6-panel)
-aspect_ratio_square = 1              # Square grid (e.g. heatmaps)
+# --- Figure sizing and scaling ---
+fig_width_cm = 18
+cm2in = 1 / 2.54
+
+# --- For heatmaps and capped colorbar ---
+vmin = 0
+vmax = 1.5
+
+# --- Aspect ratios ---
+aspect_ratio_standard = 4 / 3
+aspect_ratio_tall = 2 / 3
+aspect_ratio_square = 1

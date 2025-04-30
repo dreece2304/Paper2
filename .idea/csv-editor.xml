@@ -10,6 +10,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\03_Developer_Stability_Patterning_Contrast\data\processed\etch_stability_summary.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\05_FTIR_Analysis\data\processed\BTYFTIR_Final.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
