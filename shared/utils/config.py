@@ -49,3 +49,8 @@ vmax = 1.5
 aspect_ratio_standard = 4 / 3
 aspect_ratio_tall = 2 / 3
 aspect_ratio_square = 1
+
+viridis = cm.get_cmap("viridis")
+
+color_asdeposited = viridis(0.2)
+color_uvtreated = viridis(0.8)

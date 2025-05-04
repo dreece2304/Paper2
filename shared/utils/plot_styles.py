@@ -3,8 +3,10 @@ import seaborn as sns
 
 def set_plot_style():
     """
-    Set the global plot style for all figures: font, sizes, line widths, colormaps.
+    Set the global plot style for all figures to match publication standards.
     """
+
+    # Update matplotlib defaults
     plt.rcParams.update({
         # Fonts
         'font.family': 'sans-serif',
@@ -15,32 +17,35 @@ def set_plot_style():
         'xtick.labelsize': 10,
         'ytick.labelsize': 10,
 
-        # Lines
-        'lines.linewidth': 2,
+        # Line styles
+        'lines.linewidth': 1.5,  # For all line plots
 
-        # Axes
-        'axes.linewidth': 1,
-        'axes.spines.top': False,
-        'axes.spines.right': False,
+        # Axis spine styling
+        'axes.linewidth': 3,        # Thick black frame
+        'axes.edgecolor': 'black',
 
-        # Grid
-        'axes.grid': True,
-        'grid.linestyle': '--',
-        'grid.linewidth': 0.5,
+        # Tick markers on all sides
+        'xtick.top': True,
+        'xtick.bottom': True,
+        'ytick.left': True,
+        'ytick.right': True,
+        'xtick.direction': 'in',
+        'ytick.direction': 'in',
 
-        # Colormap
+        # Grid — off by default for line plots
+        'axes.grid': False,
+
+        # Color map default
         'image.cmap': 'viridis',
 
         # Legend
         'legend.frameon': False,
         'legend.fontsize': 10,
 
-        # DPI
+        # Resolution
         'figure.dpi': 300,
         'savefig.dpi': 300,
     })
 
-    sns.set_theme(style="whitegrid", palette="viridis")
-
-# Auto-apply when imported
-set_plot_style()
+    # Seaborn theme baseline
+    sns.set_theme(style="white", palette="viridis")

@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\01_Hybrid_Growth\data\processed\Alucone_Zincone_GPC.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\03_Developer_Stability_Patterning_Contrast\data\processed\Etch_Stability_Summary.csv">
           <value>
             <Attribute>
