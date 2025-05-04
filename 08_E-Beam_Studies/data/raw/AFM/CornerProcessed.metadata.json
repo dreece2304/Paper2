@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-05-02T19:43:05.545288",
+  "processing_steps": [
+    {
+      "step": "reset",
+      "parameters": {},
+      "timestamp": "2025-05-02T19:43:05.545288"
+    },
+    {
+      "step": "load_data",
+      "parameters": {
+        "file_path": "C:\\Users\\dreec\\DataspellProjects\\Paper2_Figure_Analysis\\08_E-Beam_Studies\\data\\raw\\AFM\\DR_250501_AluconeBTY_Sampe6_corner500.spm",
+        "source": "pySPM_Bruker",
+        "dimensions": [
+          512,
+          512
+        ],
+        "channel": "Height Sensor"
+      },
+      "timestamp": "2025-05-02T19:43:10.545456"
+    },
+    {
+      "step": "apply_correction",
+      "parameters": {
+        "method": "Mean Line",
+        "parameters": {
+          "method": 
