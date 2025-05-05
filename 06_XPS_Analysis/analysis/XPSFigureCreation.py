@@ -1,55 +1,85 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+import os
+import re
 
-# Load data
-df = pd.read_csv("../data/raw/XPS/BTY_AD.csv")
+# === Setup ===
+mpl.rcParams['xtick.direction'] = 'in'
+mpl.rcParams['ytick.direction'] = 'in'
+mpl.rcParams['axes.spines.right'] = False
+mpl.rcParams['axes.spines.top'] = False
 
-# Setup figure
-fig, axes = plt.subplots(1, 3, figsize=(15, 5))
+# === File Paths ===
+base_path = "06_XPS_Analysis/analysis"
+parquet_files = [
+    ("As Deposited", f"{base_path}/AsDeposited.parquet"),
+    ("Water Exposed", f"{base_path}/Water.parquet"),
+    ("Water Exposed UV", f"{base_path}/UV_Water.parquet")
+]
+exposure_labels = [label for label, _ in parquet_files]
+region_order = ["C 1s", "O 1s", "Al 2p"]
+fit_colors = ['#857bbe', '#4e9ad4', '#89c79c', '#d8b26e', '#c26666']
 
-# Common settings
-plt.rcParams.update({'font.size': 12})
-colors_o1s = ['tab:blue', 'tab:green', 'tab:red']
-colors_c1s = ['tab:blue', 'tab:green', 'tab:red', 'tab:orange', 'tab:purple']
-color_al2p = 'tab:blue'
+# === Helper ===
+def detect_fit_columns(df):
+    return [
+        col for col in df.columns
+        if re.match(r'^fit\d*(\.\d+)?$', col)
+        and df[col].notna().any()
+        and df[col].nunique(dropna=True) > 1
+        and (df[col].max() - df[col].min()) > 1e-3
+    ]
 
-# --- O1s Spectrum ---
-ax = axes[0]
-ax.plot(df['B.E.'], df['raw O1s'], color='black', label='Raw')
-for i, col in enumerate(['fit1', 'fit2', 'fit3']):
-    ax.fill_between(df['B.E.'], df[col], alpha=0.5, color=colors_o1s[i], label=f'Fit {i+1}')
-ax.plot(df['B.E.'], df['Envelope'], linestyle='--', color='black', label='Envelope')
-ax.plot(df['B.E.'], df['Background'], linestyle=':', color='gray', label='Background')
-ax.set_title("O 1s")
-ax.set_xlabel("Binding Energy (eV)")
-ax.set_ylabel("Intensity (a.u.)")
-ax.invert_xaxis()
-ax.legend(fontsize=9)
+# === Plotting ===
+fig, axes = plt.subplots(3, 3, figsize=(10, 7), sharex=False, sharey=False)
 
-# --- C1s Spectrum ---
-ax = axes[1]
-ax.plot(df['B.E..1'], df['raw C1s'], color='black', label='Raw')
-for i, col in enumerate(['fit1.1', 'fit2.1', 'fit3.1', 'fit4', 'fit5']):
-    ax.fill_between(df['B.E..1'], df[col], alpha=0.5, color=colors_c1s[i], label=f'Fit {i+1}')
-ax.plot(df['B.E..1'], df['Envelope.1'], linestyle='--', color='black', label='Envelope')
-ax.plot(df['B.E..1'], df['Background.1'], linestyle=':', color='gray', label='Background')
-ax.set_title("C 1s")
-ax.set_xlabel("Binding Energy (eV)")
-ax.invert_xaxis()
-ax.legend(fontsize=9)
+for row, (label, file) in enumerate(parquet_files):
+    df = pd.read_parquet(file)
+    for col, region in enumerate(region_order):
+        ax = axes[row, col]
+        region_df = df[df['Region'] == region]
+        x = region_df['B.E.']
+        bg = region_df['Background'] if 'Background' in region_df else 0
 
-# --- Al 2p Spectrum ---
-ax = axes[2]
-ax.plot(df['B.E..2'], df['raw Al2p'], color='black', label='Raw')
-ax.fill_between(df['B.E..2'], df['fit1.2'], alpha=0.5, color=color_al2p, label='Fit 1')
-ax.plot(df['B.E..2'], df['Envelope.2'], linestyle='--', color='black', label='Envelope')
-ax.plot(df['B.E..2'], df['Background.2'], linestyle=':', color='gray', label='Background')
-ax.set_title("Al 2p")
-ax.set_xlabel("Binding Energy (eV)")
-ax.invert_xaxis()
-ax.legend(fontsize=9)
+        # Raw data (baseline-subtracted)
+        if 'raw' in region_df.columns:
+            ax.plot(x, region_df['raw'] - bg, 'x', color='black', markersize=3)
 
-# Layout
+        # Envelope (baseline-subtracted)
+        if 'Envelope' in region_df.columns:
+            ax.plot(x, region_df['Envelope'] - bg, '-', lw=1, color='black')
+
+        # Fits (baseline-subtracted)
+        fits = detect_fit_columns(region_df)
+        for j, colname in enumerate(fits):
+            y = region_df[colname] - bg
+            ax.fill_between(x, y, alpha=0.5, color=fit_colors[j % len(fit_colors)], clip_on=True)
+
+        ax.invert_xaxis()
+
+        # Titles & labels
+        if row == 0:
+            ax.set_title(region)
+        if col == 0:
+            ax.set_ylabel(label, fontsize=10)
+        else:
+            ax.set_ylabel("")
+
+        if row == 2:
+            ax.set_xlabel("Binding Energy (eV)")
+        else:
+            ax.set_xticklabels([])
+
+        if col == 1:
+            ax.set_ylabel("Intensity (a.u.)")
+        else:
+            ax.set_yticklabels([])
+
+# === Export ===
 plt.tight_layout()
-plt.savefig("BTY_AD_XPS_Figure_Paper2.png", dpi=600)
+plt.savefig("XPS_3x3_Composite.pdf", dpi=600, bbox_inches='tight')
+plt.savefig("XPS_3x3_Composite.png", dpi=600, bbox_inches='tight')
+plt.savefig("XPS_3x3_Composite.svg", bbox_inches='tight')
 plt.show()
+print("✅ Saved: PDF, PNG, and SVG")
