@@ -1,0 +1,32 @@
+% ================================================
+% Custom Settings for Manuscript Template
+% ================================================
+
+% Line Spacing
+\setstretch{1.5}
+
+% Paragraph Formatting
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+
+% Highlighting Text
+\definecolor{highlightcolor}{RGB}{255, 255, 153}
+\newcommand{\highlight}[1]{\colorbox{highlightcolor}{#1}}
+
+% SI Units
+\usepackage{siunitx}
+\sisetup{
+  detect-all,
+  output-decimal-marker=.,
+}
+
+% Shortcut Commands
+\newcommand{\etal}{\textit{et~al.}}
+\newcommand{\eg}{e.g.,~}
+\newcommand{\ie}{i.e.,~}
+
+% Bibliography Tweaks
+\AtEveryBibitem{\clearlist{language}}
+\DeclareFieldFormat[article]{title}{\textit{#1}}
+
+% End of Custom Settings

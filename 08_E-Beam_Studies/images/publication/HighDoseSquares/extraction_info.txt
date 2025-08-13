@@ -1,0 +1,13 @@
+SEM Feature Extraction Info
+===========================
+Image: HighDoseSquares.tif
+Matrix type: HighDoseSquares
+Feature type: Square Matrix
+Label extracted: Yes
+
+Files created:
+  - HighDoseSquares_feature.tif
+  - HighDoseSquares_background.tif
+  - HighDoseSquares_label.tif
+  - HighDoseSquares_overview_with_ROIs.png
+  - ROIs_HighDoseSquares.zip

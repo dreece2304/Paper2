@@ -1,0 +1,67 @@
+{
+  "source_file": "Alucone_ad_powder.JDX",
+  "selection_date": "2025-07-24",
+  "total_peaks": 10,
+  "peaks": {
+    "3660": {
+      "wavenumber": 3659.8224285714286,
+      "intensity": 0.13734208976821097,
+      "assignment": "O-H stretch",
+      "peak_number": 1
+    },
+    "2980": {
+      "wavenumber": 2980.434166666667,
+      "intensity": 1.0,
+      "assignment": "C-H stretch",
+      "peak_number": 2
+    },
+    "2931": {
+      "wavenumber": 2931.2521428571426,
+      "intensity": 0.2558747692608519,
+      "assignment": "C-H stretch",
+      "peak_number": 3
+    },
+    "2889": {
+      "wavenumber": 2888.820142857143,
+      "intensity": 0.3285462505006353,
+      "assignment": "C-H stretch",
+      "peak_number": 4
+    },
+    "1462": {
+      "wavenumber": 1462.2041428571429,
+      "intensity": 0.1601230913962556,
+      "assignment": "C-O, Al-O-C",
+      "peak_number": 5
+    },
+    "1382": {
+      "wavenumber": 1381.701,
+      "intensity": 0.4085918210281064,
+      "assignment": "C-O, Al-O-C",
+      "peak_number": 6
+    },
+    "1252": {
+      "wavenumber": 1251.546,
+      "intensity": 0.25297187197730214,
+      "assignment": "C-O, Al-O-C",
+      "peak_number": 7
+    },
+    "1154": {
+      "wavenumber": 1153.689,
+      "intensity": 0.3289605347713895,
+      "assignment": "C-C, Al-O",
+      "peak_number": 8
+    },
+    "1073": {
+      "wavenumber": 1072.703857142857,
+      "intensity": 0.19336658952499558,
+      "assignment": "C-C, Al-O",
+      "peak_number": 9
+    },
+    "953": {
+      "wavenumber": 953.1447142857144,
+      "intensity": 0.33312376631242,
+      "assignment": "C-C, Al-O",
+      "peak_number": 10
+    }
+  }
+}

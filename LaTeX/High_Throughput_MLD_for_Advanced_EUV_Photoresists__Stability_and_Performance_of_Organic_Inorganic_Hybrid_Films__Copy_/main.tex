@@ -1,0 +1,78 @@
+\documentclass{mymanuscript} % Load custom class
+
+% Redefine figure captions
+\DeclareCaptionFormat{customfig}{
+  \textbf{#1#2}#3 % Bold label and colon
+}
+\captionsetup[figure]{
+  format=customfig, % Use the custom format for figures
+  font=small,       % Font size
+  labelfont=bf,     % Bold label
+  justification=raggedright, % Left-align captions
+  singlelinecheck=false % Avoid centering single-line captions
+}
+
+% Redefine table captions
+\DeclareCaptionFormat{customtbl}{
+  \textbf{#1#2}#3 % Bold label and colon\textsc{}
+}
+\captionsetup[table]{
+  format=customtbl, % Use the custom format for tables
+  font=small,       
+  labelfont=bf,     
+  justification=raggedright, 
+  singlelinecheck=false 
+}
+
+% Metadata
+\title{High-Throughput MLD for Advanced EUV Photoresists: Stability and Performance of Organic–Inorganic Hybrid Films}
+\author{
+  \authorinfo{Duncan Reece}{1},
+  \authorinfo{Emily Crum}{1},
+  \authorinfo{Jane Keth}{1},
+  \authorinfo{David S. Bergsman}{1}
+}
+\newcommand{\affiliations}{
+  \affiliation{1}{Department of Chemical Engineering, University of Washington, Seattle, WA, USA\\ \texttt{duncan.reece@uw.edu}}
+  \affiliation{2}{Research Center, Institute Name, City, Country\\ \texttt{jane.keth@uw.edu}}
+}
+\usepackage{fontspec}   % Full Unicode support
+\usepackage{siunitx}
+
+\begin{document}
+
+% Title Page
+\maketitle
+
+% Abstract
+\input{sections/abstract}
+
+\newpage
+
+% Main Sections
+\input{sections/introduction}
+\input{sections/methods}
+\input{sections/results}
+\input{sections/conclusion}
+
+% Additional Sections Required for Submission
+\section*{Acknowledgements}
+The authors gratefully acknowledge support from the National Science Foundation and University of Washington facilities.
+
+\section*{Author Contributions}
+D.R. performed all experiments and analysis. All authors contributed to manuscript preparation.
+
+\section*{Conflicts of Interest}
+The authors declare no conflicts of interest.
+
+\section*{Data Availability Statement}
+All data supporting the findings of this study are available from the corresponding author upon reasonable request.
+
+% Bibliography
+\printbibliography
+
+% Supplementary Information
+\appendix
+\input{sections/si}
+
+\end{document}

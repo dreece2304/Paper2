@@ -1,0 +1,378 @@
+{
+  "regions": {
+    "hydroxyl": {
+      "name": "O-H stretching",
+      "range": [
+        3000,
+        3800
+      ],
+      "display_label": "O-H"
+    },
+    "ch_stretching": {
+      "name": "C-H stretching",
+      "range": [
+        2800,
+        3000
+      ],
+      "display_label": "C-H"
+    },
+    "artifact": {
+      "name": "CO₂ interference",
+      "range": [
+        2300,
+        2600
+      ],
+      "display_label": "Artifacts"
+    },
+    "cc_stretching": {
+      "name": "C≡C stretching",
+      "range": [
+        2000,
+        2200
+      ],
+      "display_label": "C≡C"
+    },
+    "carbonyl_alkene": {
+      "name": "C=C stretching",
+      "range": [
+        1500,
+        1700
+      ],
+      "display_label": "C=C"
+    },
+    "ch_bending": {
+      "name": "C-H bending",
+      "range": [
+        1350,
+        1500
+      ],
+      "display_label": "C-H bend"
+    },
+    "al_o_c": {
+      "name": "Al-O-C stretching",
+      "range": [
+        900,
+        1300
+      ],
+      "display_label": "Al-O-C"
+    },
+    "al_o": {
+      "name": "Al-O stretching/bending",
+      "range": [
+        400,
+        900
+      ],
+      "display_label": "Al-O"
+    }
+  },
+  "peaks": {
+    "3641": {
+      "label": "Free O-H stretch",
+      "assignment": "Surface Al-OH groups",
+      "importance": "high",
+      "measured_asdep": 0.24,
+      "measured_uv": 0.133,
+      "change_percent": -44.4,
+      "change_type": "DECREASES",
+      "wavenumber": 3641,
+      "spectrum_info": "Both spectra",
+      "region": "hydroxyl",
+      "symbol": "↓",
+      "notes": "Surface groups"
+    },
+    "3217": {
+      "label": "H-bonded O-H stretch",
+      "assignment": "H-bonded Al-OH groups",
+      "importance": "high",
+      "measured_asdep": 0.43,
+      "measured_uv": 0.035,
+      "change_percent": -92.0,
+      "change_type": "MAJOR_DECREASE",
+      "wavenumber": 3217,
+      "spectrum_info": "As-dep → trace",
+      "region": "hydroxyl",
+      "symbol": "↓↓",
+      "notes": "Nearly eliminated"
+    },
+    "2911": {
+      "label": "CH₂ asymmetric stretch",
+      "assignment": "Methylene groups",
+      "importance": "medium",
+      "measured_asdep": 0.319,
+      "measured_uv": 0.128,
+      "change_percent": -60.0,
+      "change_type": "DECREASES",
+      "wavenumber": 2911,
+      "spectrum_info": "Both spectra",
+      "region": "ch_stretching",
+      "symbol": "↓",
+      "notes": "Alkyl chain"
+    },
+    "2850": {
+      "label": "CH₂ symmetric stretch",
+      "assignment": "Methylene groups",
+      "importance": "medium",
+      "measured_asdep": 0.522,
+      "measured_uv": 0.154,
+      "change_percent": -70.5,
+      "change_type": "MAJOR_DECREASE",
+      "wavenumber": 2850,
+      "spectrum_info": "Both spectra",
+      "region": "ch_stretching",
+      "symbol": "↓↓",
+      "notes": "Alkyl chain"
+    },
+    "2546": {
+      "label": "Artifact peak",
+      "assignment": "Atmospheric interference",
+      "importance": "low",
+      "measured_asdep": 0.373,
+      "measured_uv": 0.247,
+      "change_percent": -33.9,
+      "change_type": "ARTIFACT",
+      "wavenumber": 2546,
+      "spectrum_info": "Both spectra",
+      "region": "artifact",
+      "symbol": "⚠",
+      "notes": "CO₂ interference"
+    },
+    "2444": {
+      "label": "Artifact peak",
+      "assignment": "Atmospheric interference",
+      "importance": "low",
+      "measured_asdep": 0.375,
+      "measured_uv": 0.242,
+      "change_percent": -35.3,
+      "change_type": "ARTIFACT",
+      "wavenumber": 2444,
+      "spectrum_info": "Both spectra",
+      "region": "artifact",
+      "symbol": "⚠",
+      "notes": "CO₂ interference"
+    },
+    "2154_expected": {
+      "label": "C≡C stretch (internal)",
+      "assignment": "Internal alkyne",
+      "importance": "high",
+      "measured_asdep": 0.0,
+      "measured_uv": 0.0,
+      "change_percent": 0.0,
+      "change_type": "ARTIFACT_INTERFERENCE",
+      "wavenumber": 2154,
+      "spectrum_info": "Artifact interference",
+      "region": "cc_stretching",
+      "symbol": "⚠",
+      "notes": "Expected ~2154, CO₂ obscured"
+    },
+    "2100_expected": {
+      "label": "C≡C stretch",
+      "assignment": "Internal alkyne",
+      "importance": "medium",
+      "measured_asdep": 0.0,
+      "measured_uv": 0.0,
+      "change_percent": 0.0,
+      "change_type": "ARTIFACT_INTERFERENCE",
+      "wavenumber": 2100,
+      "spectrum_info": "Likely obscured",
+      "region": "cc_stretching",
+      "symbol": "⚠",
+      "notes": "Expected ~2100, CO₂ interference"
+    },
+    "1608": {
+      "label": "C=C stretch",
+      "assignment": "UV-induced conjugation",
+      "importance": "high",
+      "measured_asdep": 0.173,
+      "measured_uv": 0.339,
+      "change_percent": 96.5,
+      "change_type": "MAJOR_INCREASE",
+      "wavenumber": 1608,
+      "spectrum_info": "Both spectra",
+      "region": "carbonyl_alkene",
+      "symbol": "↑↑",
+      "notes": "UV polymerization"
+    },
+    "1451": {
+      "label": "CH₂ bending",
+      "assignment": "Methylene deformation",
+      "importance": "medium",
+      "measured_asdep": 0.298,
+      "measured_uv": 0.143,
+      "change_percent": -51.9,
+      "change_type": "DECREASES",
+      "wavenumber": 1451,
+      "spectrum_info": "Both spectra",
+      "region": "ch_bending",
+      "symbol": "↓",
+      "notes": "Alkyl deformation"
+    },
+    "1365": {
+      "label": "CH₃ bending",
+      "assignment": "Methyl deformation",
+      "importance": "medium",
+      "measured_asdep": 0.57,
+      "measured_uv": 0.294,
+      "change_percent": -48.5,
+      "change_type": "DECREASES",
+      "wavenumber": 1365,
+      "spectrum_info": "Both spectra",
+      "region": "ch_bending",
+      "symbol": "↓",
+      "notes": "Terminal groups"
+    },
+    "1267": {
+      "label": "C-O stretch",
+      "assignment": "Ether linkage",
+      "importance": "medium",
+      "measured_asdep": 0.131,
+      "measured_uv": 0.081,
+      "change_percent": -38.0,
+      "change_type": "DECREASES",
+      "wavenumber": 1267,
+      "spectrum_info": "Both spectra",
+      "region": "al_o_c",
+      "symbol": "↓",
+      "notes": "C-O bond"
+    },
+    "1228": {
+      "label": "Al-O-C stretch",
+      "assignment": "Al-O-C bridging",
+      "importance": "medium",
+      "measured_asdep": 0.122,
+      "measured_uv": 0.032,
+      "change_percent": -73.6,
+      "change_type": "MAJOR_DECREASE",
+      "wavenumber": 1228,
+      "spectrum_info": "As-deposited only",
+      "region": "al_o_c",
+      "symbol": "↓↓",
+      "notes": "Disappears with UV"
+    },
+    "1135": {
+      "label": "Al-O-C asymmetric",
+      "assignment": "Al-O-C asymmetric stretch",
+      "importance": "high",
+      "measured_asdep": 0.77,
+      "measured_uv": 0.417,
+      "change_percent": -45.8,
+      "change_type": "DECREASES",
+      "wavenumber": 1135,
+      "spectrum_info": "Both spectra",
+      "region": "al_o_c",
+      "symbol": "↓",
+      "notes": "Primary Al-O-C mode"
+    },
+    "1063": {
+      "label": "Al-O-C shoulder",
+      "assignment": "Al-O-C stretch (shoulder)",
+      "importance": "medium",
+      "measured_asdep": 0.773,
+      "measured_uv": 0.534,
+      "change_percent": -31.0,
+      "change_type": "DECREASES",
+      "wavenumber": 1063,
+      "spectrum_info": "Both spectra",
+      "region": "al_o_c",
+      "symbol": "↓",
+      "notes": "Shoulder to 1020, more defined in as-dep"
+    },
+    "1020": {
+      "label": "Al-O-C symmetric",
+      "assignment": "Al-O-C symmetric stretch",
+      "importance": "high",
+      "measured_asdep": 0.945,
+      "measured_uv": 0.713,
+      "change_percent": -24.5,
+      "change_type": "DECREASES",
+      "wavenumber": 1020,
+      "spectrum_info": "Both spectra",
+      "region": "al_o_c",
+      "symbol": "↓",
+      "notes": "Main Al-O-C peak"
+    },
+    "845": {
+      "label": "Al-O stretch",
+      "assignment": "Al-O vibrational mode",
+      "importance": "medium",
+      "measured_asdep": 0.0,
+      "measured_uv": 0.238,
+      "change_percent": 100.0,
+      "change_type": "APPEARS",
+      "wavenumber": 845,
+      "spectrum_info": "UV only",
+      "region": "al_o",
+      "symbol": "↑↑",
+      "notes": "UV-induced ordering"
+    },
+    "800": {
+      "label": "Al-O vibration",
+      "assignment": "Al-O vibrational mode",
+      "importance": "low",
+      "measured_asdep": 0.108,
+      "measured_uv": 0.199,
+      "change_percent": 84.8,
+      "change_type": "INCREASES",
+      "wavenumber": 800,
+      "spectrum_info": "Both spectra",
+      "region": "al_o",
+      "symbol": "↑",
+      "notes": "Weak in both, slightly stronger in UV"
+    },
+    "750": {
+      "label": "Al-O shoulder",
+      "assignment": "Al-O stretch (shoulder)",
+      "importance": "low",
+      "measured_asdep": 0.0,
+      "measured_uv": 0.05,
+      "change_percent": 100.0,
+      "change_type": "APPEARS",
+      "wavenumber": 750,
+      "spectrum_info": "UV only (shoulder)",
+      "region": "al_o",
+      "symbol": "↑",
+      "notes": "UV-induced shoulder peak"
+    },
+    "670": {
+      "label": "Al-O stretch (broad)",
+      "assignment": "Al-O network vibrations",
+      "importance": "high",
+      "measured_asdep": 0.396,
+      "measured_uv": 0.963,
+      "change_percent": 143.2,
+      "change_type": "MAJOR_INCREASE",
+      "wavenumber": 670,
+      "spectrum_info": "Both spectra",
+      "region": "al_o",
+      "symbol": "↑↑",
+      "notes": "Broad plateau, multiple Al-O environments"
+    },
+    "618": {
+      "label": "Al-O vibration",
+      "assignment": "Minor Al-O mode",
+      "importance": "low",
+      "measured_asdep": 0.03,
+      "measured_uv": 0.06,
+      "change_percent": 100.0,
+      "change_type": "INCREASES",
+      "wavenumber": 618,
+      "spectrum_info": "Both spectra",
+      "region": "al_o",
+      "symbol": "↑",
+      "notes": "Very small, sharper in UV"
+    },
+    "583": {
+      "label": "Al-O bending",
+      "assignment": "Al-O bending mode",
+      "importance": "medium",
+      "measured_asdep": 0.196,
+      "measured_uv": 0.592,
+      "change_percent": 202.8,
+      "change_type": "MAJOR_INCREASE",
+      "wavenumber": 583,
+      "spectrum_info": "Both spectra",
+      "region": "al_o",
+      "symbol": "↑↑",
+      "notes": "Broad, disorder-related"
+    }
+  }
+}

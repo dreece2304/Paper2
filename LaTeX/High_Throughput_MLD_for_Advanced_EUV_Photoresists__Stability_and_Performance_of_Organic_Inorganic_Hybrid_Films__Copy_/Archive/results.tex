@@ -1,0 +1,181 @@
+\section{Results and Discussion}
+
+\subsection{Hybrid Film Growth and Thickness Control}
+
+Hybrid organic--inorganic thin films were synthesized via molecular layer deposition (MLD) using trimethylaluminum (TMA) or diethylzinc (DEZ) combined with bifunctional organic diol precursors. Growth per cycle (GPC) values ranged explicitly between approximately \SI{1}{\angstrom\per cycle} and \SI{6}{\angstrom\per cycle}, indicative of highly controlled, near-stoichiometric MLD behavior that avoids undesirable chemical vapor deposition (CVD) processes~\cite{REF}.
+
+Films synthesized with 1,4-butynediol (BTY) exhibited consistently high GPC values (\SI{\sim 6}{\angstrom\per cycle}), explicitly attributed to the rigid linear structure imposed by BTY's carbon--carbon triple bond. Such structural rigidity minimizes conformational rearrangements, thereby enhancing precursor surface reactivity and monolayer saturation~\cite{REF}. Alucone films based on cis-2-butene-1,4-diol (CB), 2-methylene-1,3-propanediol (MPD), and 1,3,4-trihydroxybenzene (THB) demonstrated intermediate GPCs explicitly between \SIrange{3}{5}{\angstrom\per cycle}, reflecting moderate linker flexibility and surface reactivity.
+
+In contrast, zincone films deposited using DEZ showed slightly lower and more variable GPCs, typically ranging from \SIrange{1}{4}{\angstrom\per cycle}, attributed explicitly to less effective surface saturation and weaker metal-organic interactions characteristic of zinc precursors~\cite{REF}.
+
+Film thicknesses were explicitly tuned between approximately \SI{20}{\nano\meter} and \SI{80}{\nano\meter} by adjusting deposition cycles (typically 100 cycles). High reproducibility and uniformity of thickness across deposition batches were confirmed explicitly via spectroscopic ellipsometry measurements (Supplementary Figure~S1), establishing a robust and reproducible MLD process framework for subsequent stability and lithographic evaluations.
+
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{figures/growth_thickness.pdf}
+  \caption{Representative film thickness after 100 MLD cycles for various hybrid materials, demonstrating reproducibility and consistency of growth across deposition batches.}
+  \label{fig:growth_thickness}
+\end{figure}
+
+
+
+\subsection{Air Stability and Degradation Resistance}
+
+The environmental stability of hybrid films was evaluated by monitoring changes in film thickness following ambient air exposure (\SI{20}{\celsius}, \SIrange{40}{50}{\percent} RH) for durations of \SI{1}{\hour} and \SI{24}{\hour}. Thickness measurements were performed via spectroscopic ellipsometry.
+
+Zincone films exhibited rapid and severe degradation, losing more than 40\% of their thickness within the initial \SI{10}{\minute} of exposure. This pronounced instability is consistent with the high hydrolytic susceptibility of Zn--O--C bonds, owing to the inherent nucleophilic vulnerability of zinc centers and the comparatively weak bonding character relative to aluminum-based counterparts~\cite{REF}. Although ultraviolet (UV) exposure (\SI{254}{\nano\meter}) before ambient exposure modestly slowed initial degradation rates, significant thickness losses persisted over \SI{24}{\hour} periods, particularly pronounced in films synthesized from ethylene glycol (EG), 2-methylene-1,3-propanediol (MPD), and 3,4-dihydroxy-1-butene (DHB).
+
+In stark contrast, alucone films displayed superior air stability. As-deposited alucones experienced moderate thickness reductions (\SIrange{10}{20}{\percent}) over \SI{24}{\hour}. Notably, UV-treated alucone films exhibited markedly enhanced stability, retaining more than 95\% of their original thickness after \SI{24}{\hour} (Figure~\ref{fig:air_stability}). This improvement is attributable to UV-induced crosslinking and network densification, which significantly reduced the accessibility of moisture to reactive bonding sites~\cite{REF}.
+
+These results emphasize the critical role of metal center identity and network crosslinking in dictating environmental robustness. The clear disparity between zincone and alucone stability provides strong justification for the selection of aluminum-based hybrid networks as more suitable candidates for further lithographic study.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{figures/air_stability.pdf}
+  \caption{Air stability comparison of alucone and zincone films, showing significant improvements in thickness retention after UV treatment for alucone films, compared to rapid degradation of zincones.}
+  \label{fig:air_stability}
+\end{figure}
+
+
+\subsection{Developer Compatibility and Patterning Contrast}
+
+Chemical robustness and developer compatibility were assessed by immersing hybrid films in DI water, anhydrous organic solvents (acetone, toluene, chloroform), and dilute aqueous developers (\SI{0.01}{\molar} HCl and \SI{0.01}{\molar} KOH) for \SI{1}{\hour}. Post-treatment film thicknesses and refractive indices were analyzed by spectroscopic ellipsometry.
+
+Zincone films showed extreme sensitivity, undergoing rapid dissolution in aqueous environments and substantial thickness loss in organic solvents. This severe instability likely results from facile hydrolytic cleavage of Zn--O--C linkages upon exposure to moisture or polar solvents~\cite{REF}. While UV pretreatment modestly improved handling stability, the intrinsic chemical fragility of zincones limited their applicability for lithographic purposes.
+
+Alucone films exhibited considerably greater robustness. As-deposited alucones experienced modest thickness decreases (\SIrange{10}{20}{\percent}) in DI water, indicative of partial hydrolysis. Organic solvent immersion generally resulted in minor thickness increases and refractive index reductions, suggesting limited solvent penetration and the formation of porous microstructures within the films~\cite{REF}. UV-treated alucones displayed significantly enhanced chemical resistance, retaining both thickness and refractive indices after immersion in all tested solvents and aqueous solutions (Figure~\ref{fig:developer_heatmaps}), reflecting the densified and crosslinked network structures induced by UV irradiation.
+
+Both \SI{0.01}{\molar} KOH and \SI{0.01}{\molar} HCl were able to fully remove films upon prolonged immersion. However, due to its aggressive etching behavior toward silicon substrates and associated risks of pattern undercutting, KOH was excluded from subsequent lithographic development considerations~\cite{REF}. HCl provided selective and controlled dissolution of unexposed regions via protonation and hydrolysis of metal--O--C bonds, making it the optimal developer choice.
+
+Short-time immersion tests in \SI{0.01}{\molar} HCl demonstrated high chemical contrast between UV-treated and as-deposited alucone films. UV-treated alucones exhibited substantially delayed dissolution rates, highlighting their suitability for high-resolution lithographic applications. This pronounced chemical contrast directly informed the selection of alucone-based materials for subsequent electron-beam lithography (EBL) studies.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{figures/developer_heatmaps.pdf}
+  \caption{Heatmap illustrating thickness changes of hybrid films after 1-hour immersion in various solvents and aqueous developers, highlighting the enhanced stability of UV-treated alucone films.}
+  \label{fig:developer_heatmaps}
+\end{figure}
+
+
+\subsection{Selection of Lead Materials for Lithography}
+
+The outcomes from air stability and developer compatibility testing directly informed the systematic selection of lead materials for electron-beam lithography (EBL) evaluation. Due to their rapid hydrolytic degradation in ambient and aqueous environments, zincone films were considered unsuitable for lithographic applications. This decision was further supported by concerns regarding potential zinc contamination and vacuum instability during electron-beam exposure~\cite{REF}.
+
+Among alucone-based films, significant differentiation emerged in terms of chemical stability and UV-induced improvements. Films synthesized using 1,4-butynediol (BTY) exhibited notably high and reproducible growth per cycle (\SI{\sim 6}{\angstrom\per\cycle}) along with remarkable chemical robustness and stability enhancements following UV treatment, indicating extensive photochemical crosslinking within the hybrid network~\cite{REF}. Consequently, BTY-alucone films were prioritized as the primary candidates for advanced lithographic analysis.
+
+Films based on cis-2-butene-1,4-diol (CB) also showed promising performance, demonstrating significant UV-driven stability improvements attributed to crosslinking in their unsaturated organic frameworks~\cite{REF}. In contrast, alucones derived from 2-methylene-1,3-propanediol (MPD) exhibited only modest gains in stability after UV exposure, suggesting limited structural reorganization and lower crosslinking density. As such, MPD-based films were excluded from further primary lithographic evaluation but retained as comparative references for mechanistic insights.
+
+Films incorporating the aromatic linker 1,3,4-trihydroxybenzene (THB) presented intermediate stability and chemical resistance, displaying clear UV-induced enhancement attributed to moderate crosslinking within the aromatic network structure~\cite{REF}. Therefore, THB-based alucones were retained in the study as comparative systems to elucidate the influence of aromaticity on network stabilization and lithographic performance.
+
+The selection of BTY- and CB-based alucones as lead candidates was ultimately based on their optimal balance of reproducible deposition characteristics, strong chemical robustness, and significant UV-enhanced stability, positioning them as ideal materials for subsequent electron-beam lithographic investigations and detailed mechanistic studies~\cite{REF}.
+
+
+
+\subsection{FTIR Analysis: UV-Induced Crosslinking and Network Densification}
+
+Fourier-transform infrared (FTIR) spectroscopy was employed to investigate chemical transformations and network structural changes induced by ultraviolet (UV) exposure (\SI{254}{\nano\meter}) in alucone and zincone films. Spectra collected before and after UV irradiation provided insight into bond formation, cleavage, and overall structural reorganization within the hybrid frameworks.
+
+Alucone films demonstrated significant spectral changes consistent with photochemical crosslinking. Notably, the broad O--H stretching band centered near \SI{3400}{\per\centi\meter}, indicative of residual hydroxyl functionalities, was substantially diminished following UV exposure, suggesting consumption of free hydroxyl groups during crosslink formation~\cite{REF}. Concurrently, peaks attributed to carbon--carbon double bonds (\ce{C=C}), such as the characteristic band near \SI{1612}{\per\centi\meter}, became sharper and more distinct. This observation supports the formation of rigid conjugated or cyclic structures, likely resulting from photochemically induced cycloaddition or radical-mediated coupling reactions within the organic segments of the network~\cite{REF}.
+
+Additionally, bands corresponding to Al--O--C and Zn--O--C vibrations (typically observed around \SIrange{800}{1200}{\per\centi\meter}) exhibited reduced intensity and narrowing after UV irradiation, consistent with network densification and increased structural order. These spectral trends strongly suggest that UV exposure promotes extensive crosslinking reactions, reducing network free volume and increasing overall structural rigidity~\cite{REF}.
+
+Zincone films also exhibited spectral changes upon UV treatment, including modest reductions in O--H stretching intensities and minor alterations in metal--oxygen--carbon vibrational bands. However, these changes were significantly less pronounced compared to alucones, reflecting limited crosslinking capacity and structural densification within zincone networks~\cite{REF}. This limited photochemical response aligns with their observed instability in ambient and aqueous environments.
+
+The FTIR results clearly highlight the superior photochemical reactivity and densification capabilities of alucone materials, especially BTY- and CB-based networks, correlating strongly with the enhanced stability demonstrated in air and chemical robustness tests. These findings provide compelling mechanistic insights into how UV irradiation stabilizes hybrid films and inform the rational design of hybrid resists for lithographic applications.
+
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{figures/ftir_bty_overlay.pdf}
+  \caption{FTIR spectra of TMA–BTY films before and after UV irradiation at 254~nm. Prominent changes include increased intensity and sharpening of the C=C stretching peak at 1612~\si{\per\centi\meter}, reduction in O–H stretching absorptions (3622 and 3232~\si{\per\centi\meter}), and sharpening of Al–O bending modes (579 and 557~\si{\per\centi\meter}), indicative of UV-induced crosslinking and structural densification.}
+  \label{fig:ftir}
+\end{figure}
+
+\subsection{XPS Analysis of Bonding Environments and Stability}
+
+X-ray photoelectron spectroscopy (XPS) was utilized to characterize the chemical bonding environments and surface composition of alucone and zincone films, both as-deposited and after UV exposure. High-resolution spectra of O~1s, C~1s, Al~2p, and Zn~2p regions provided insights into chemical transformations and structural stability at the atomic scale.
+
+In alucone films, the Al~2p region consistently displayed a primary binding energy peak near 74.5~eV, characteristic of Al--O bonds within hybrid organic--inorganic frameworks~\cite{REF}. Following UV irradiation, this peak exhibited minimal shifts, indicating preserved Al--O bonding integrity and minimal formation of Al--OH or Al--O--Al functionalities upon environmental exposure. The O~1s spectra similarly showed stable Al--O--C binding environments with minor decreases in contributions from hydroxyl functionalities after UV treatment, consistent with FTIR observations of O--H consumption and network densification~\cite{REF}.
+
+Carbon (C~1s) spectra for UV-treated alucones revealed a decrease in contributions from hydroxyl-bound carbon (C--OH) and an increase in the intensity of peaks corresponding to aliphatic or aromatic C--C bonding environments, supporting UV-induced crosslinking mechanisms involving organic moieties~\cite{REF}. These spectral shifts clearly correlate with the increased chemical robustness and reduced hydrolytic susceptibility observed in developer and air stability tests.
+
+In contrast, zincone films exhibited substantial chemical instability as evidenced by pronounced shifts and broadening in Zn~2p and O~1s spectra after ambient and aqueous exposures. The Zn~2p peaks notably broadened and shifted toward higher binding energies, consistent with formation of zinc hydroxide or oxyhydroxide species due to facile hydrolysis of Zn--O--C linkages~\cite{REF}. Even after UV irradiation, minimal improvement in bonding stability was observed, aligning well with the rapid degradation observed in air and developer testing.
+
+Quantitative elemental analysis from XPS (summarized in Table~\ref{tab:xps_composition}) confirmed significant depletion of zinc and enrichment of oxygen species in zincone films after exposure, in contrast to stable elemental composition profiles exhibited by UV-treated alucones. These results reinforce the critical importance of metal center selection and UV-induced network crosslinking in achieving chemically robust hybrid films for advanced lithographic applications.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{figures/xps_spectra.pdf}
+  \caption{High-resolution XPS spectra illustrating changes in binding environments for alucone (Al~2p, C~1s, O~1s) and zincone (Zn~2p, O~1s) films before and after UV exposure and ambient conditions, highlighting superior chemical stability of alucone materials.}
+  \label{fig:xps_spectra}
+\end{figure}
+
+\begin{table}[ht]
+  \centering
+  \caption{Surface elemental composition (\%) of alucone and zincone films from XPS analysis, comparing as-deposited and UV-exposed samples after 24-hour ambient exposure.}
+  \label{tab:xps_composition}
+  \begin{tabular}{lcccc}
+    \toprule
+    Material & Condition & Al or Zn & O & C \\
+    \midrule
+    Alucone & As-deposited & XX & XX & XX \\
+            & UV-exposed & XX & XX & XX \\[1ex]
+    Zincone & As-deposited & XX & XX & XX \\
+            & UV-exposed & XX & XX & XX \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+
+\subsection{Mechanistic Insight into UV-Induced Stabilization}
+
+The combined spectroscopic evidence from FTIR and XPS analyses supports a detailed mechanistic understanding of the structural transformations and stabilization pathways occurring in alucone films upon UV irradiation. Figure~\ref{fig:structure_evolution} schematically summarizes the proposed structural evolution for BTY-based alucone (TMA--BTY), illustrating the key chemical transformations from the as-deposited state through UV exposure and subsequent hydrolytic degradation.
+
+Initially, as-deposited BTY-alucone films consist primarily of repeating \ce{Al-O-C-C#C-C-O-Al} units, formed via alternating reactions between trimethylaluminum (TMA) and 1,4-butynediol (BTY). FTIR spectra indicate residual hydroxyl functionalities (O--H stretching near 3622 and 3232~\si{\per\centi\meter}), suggesting incomplete reaction of diol end-groups during deposition, likely due to steric constraints or partial surface reactivity~\cite{REF}.
+
+Upon UV irradiation at \SI{254}{\nano\meter}, significant photochemically induced transformations occur. The most pronounced spectral change was the intensification and sharpening of the C=C stretching absorption (\SI{\sim1612}{\per\centi\meter}), indicative of UV-induced crosslinking involving alkyne groups within the organic linker. Although direct tracking of the alkyne (C$\equiv$C) stretching was complicated by atmospheric CO$_2$ interference, strengthened C=C absorptions strongly support cycloaddition or radical-mediated coupling reactions, forming rigid conjugated or aromatic domains~\cite{REF}. Concurrent reductions in hydroxyl-related FTIR absorptions indicate UV-induced secondary reactions (e.g., dehydration or ether formation) consuming residual hydroxyl groups and further densifying the hybrid network.
+
+Complementary XPS analyses reinforce these interpretations, highlighting pronounced stability enhancements in UV-treated films. UV exposure significantly inhibited hydrolytic cleavage of Al--O--C bonds, evidenced by stable Al--O--C spectral contributions and minimal formation of Al--O--Al species following aqueous exposure~\cite{REF}. Additionally, XPS C~1s spectra revealed substantial reductions in carbonate and oxidized carbon species in UV-treated films upon water exposure, directly correlating improved hydrolytic resistance with preservation of organic backbone integrity.
+
+In contrast, films not subjected to UV irradiation exhibited extensive hydrolytic degradation, characterized by increased Al--O--Al content, carbonate formation, organic oxidation, and significant thickness reduction upon water exposure. Initial hydrolysis of Al--O--C bonds likely triggers cleavage and oxidation of organic linkages, creating porous aluminum oxide-like structures~\cite{REF}. Conversely, UV-treated films displayed markedly suppressed hydrolytic degradation, as the formed crosslinked and conjugated structures effectively restricted moisture ingress and reactive site accessibility, thereby preserving both organic and inorganic integrity.
+
+Collectively, the presented spectroscopic and chemical characterizations provide strong mechanistic evidence that UV irradiation induces substantial structural reorganization and crosslinking, creating chemically and mechanically robust alucone networks. These mechanistic insights not only rationalize the experimentally observed enhancements in environmental, hydrolytic, and solvent resistance, but also highlight the strategic potential of UV-treated alucones for advanced lithographic applications requiring robust pattern stability.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/structure_evolution.pdf}
+  \caption{Proposed structural evolution and chemical transformations of BTY-based alucone films during UV irradiation and subsequent hydrolytic exposure: (a) as-deposited film containing residual hydroxyl groups and isolated alkyne linkages, (b) UV-treated film exhibiting crosslinked conjugated structures and reduced hydroxyl content, and (c) hydrolytically degraded film without UV treatment, illustrating extensive bond cleavage and porous structure formation.}
+  \label{fig:structure_evolution}
+\end{figure}
+
+
+
+\subsection{Electron-Beam Lithography Studies}
+
+To assess the practical lithographic capabilities of selected alucone films, electron-beam lithography (EBL) experiments were systematically performed using a JEOL JBX-6300FS system operating at \SI{100}{\kilo\volt}. Films derived from 1,4-butynediol (BTY) and cis-2-butene-1,4-diol (CB) precursors were selected based on their previously demonstrated superior air and chemical stability, reproducible deposition characteristics, and pronounced UV-induced stabilization.
+
+EBL patterning involved systematic exploration of exposure dose ranges from \SIrange{500}{5000}{\micro\coulomb\per\centi\meter\squared}, using dose-matrix patterns to determine optimal exposure parameters for pattern fidelity and resolution. Figure~\ref{fig:dose_matrix} (to be added) illustrates representative EBL patterns, clearly indicating dose-dependent film retention and resolution limits.
+
+Initial tests indicated a negative-tone behavior for alucone films, consistent with expectations based on UV-induced crosslinking mechanisms described earlier. The crosslinked alucone networks formed during UV exposure are hypothesized to exhibit significantly increased electron-beam resistance compared to as-deposited films, resulting from covalent bonding and densified network structures that impede polymer-chain mobility and solvent penetration during developer exposure~\cite{REF}.
+
+Contrast curves were subsequently generated by plotting normalized remaining film thickness versus exposure dose to quantitatively evaluate lithographic performance, sensitivity, and process windows. Preliminary observations suggest significantly improved contrast and pattern fidelity in UV-treated BTY- and CB-based alucones compared to previously studied ethylene glycol (EG)-based alucone materials~\cite{REF}. These improvements can be directly attributed to enhanced structural rigidity and chemical robustness imparted by the crosslinked organic–inorganic network.
+
+High-resolution scanning electron microscopy (SEM) and atomic force microscopy (AFM) analyses were conducted on patterned films to further evaluate line-edge roughness (LER), pattern resolution limits, and sidewall profiles. These analyses are critical in understanding the influence of molecular structure, crosslinking density, and developer interactions on lithographic outcomes~\cite{REF}.
+
+% Placeholder for quantitative results and comparative discussion:
+% - Dose-to-clear values (optimal doses identified clearly)
+% - Measured contrast (\(\gamma\)) values from fitted contrast curves
+% - SEM images explicitly showing resolution limits, sidewall profiles, and LER
+% - AFM measurements of topography clearly illustrating pattern fidelity
+
+The combined lithographic results from these experiments will ultimately provide explicit correlations between the photochemically induced crosslinking described in previous sections and the practical electron-beam patterning performance. Such explicit mechanistic understanding will enable targeted optimization of hybrid resists for advanced lithographic applications, explicitly guiding the design of future photoresist materials.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.75\textwidth]{figures/dose_matrix_placeholder.pdf}
+  \caption{Placeholder for electron-beam lithography dose-matrix patterns demonstrating exposure-dose dependence of film retention, resolution limits, and contrast for UV-treated alucone films. (Final figure to include clearly labeled doses and dimensions.)}
+  \label{fig:dose_matrix}
+\end{figure}
