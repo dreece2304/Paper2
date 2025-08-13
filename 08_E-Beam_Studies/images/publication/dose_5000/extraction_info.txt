@@ -1,0 +1,13 @@
+SEM Feature Extraction Info
+===========================
+Image: LineGrating5000.tif
+Dose: 5000 µC/cm²
+Feature type: Line Grating
+Label extracted: Yes
+
+Files created:
+  - LineGrating5000_feature.tif
+  - LineGrating5000_background.tif
+  - LineGrating5000_label.tif
+  - LineGrating5000_overview_with_ROIs.png
+  - ROIs_dose_5000.zip

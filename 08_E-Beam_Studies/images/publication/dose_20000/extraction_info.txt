@@ -1,0 +1,13 @@
+SEM Feature Extraction Info
+===========================
+Image: LineGrating20000.tif
+Dose: 20000 µC/cm²
+Feature type: Line Grating
+Label extracted: Yes
+
+Files created:
+  - LineGrating20000_feature.tif
+  - LineGrating20000_background.tif
+  - LineGrating20000_label.tif
+  - LineGrating20000_overview_with_ROIs.png
+  - ROIs_dose_20000.zip

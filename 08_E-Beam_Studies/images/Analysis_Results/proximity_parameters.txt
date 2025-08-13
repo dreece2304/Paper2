@@ -1,0 +1,24 @@
+=== PROXIMITY EFFECT PARAMETERS ===
+
+GRADIENT ANALYSIS:
+Average Center/Corner Ratio: NaN
+Average Uniformity: NaN
+Samples analyzed: 0
+
+HALO ANALYSIS:
+Average Halo Diameter: 168.0 pixels
+Average Decay Rate: 0.030
+Halos analyzed: 3
+
+RECOMMENDED PEC PARAMETERS:
+Î· (eta): 0.70 (estimated)
+Î± (forward range): 1-2 Âµm
+Î² (backscatter range): 20-40 Âµm
+Corner dose enhancement: NaNx
+Edge dose enhancement: NaNx
+
+BEAMER CONFIGURATION:
+Enable: Shape-dependent correction
+Enable: Dose modulation
+Grid size: 50 nm
+Iterations: 3

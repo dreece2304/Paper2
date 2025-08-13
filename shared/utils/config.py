@@ -38,8 +38,16 @@ colors = {
 }
 
 # --- Figure sizing and scaling ---
-fig_width_cm = 18
+# RSC Journal of Materials Chemistry A specifications
+fig_width_cm = 17.1  # RSC double-column maximum width
+fig_width_single_column_cm = 8.3  # RSC single-column width
+fig_height_max_cm = 23.3  # RSC maximum height
 cm2in = 1 / 2.54
+
+# RSC-compliant figure dimensions
+rsc_single_column_width_cm = 8.3
+rsc_double_column_width_cm = 17.1
+rsc_max_height_cm = 23.3
 
 # --- For heatmaps and capped colorbar ---
 vmin = 0

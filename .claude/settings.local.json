@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(source:*)",
+      "Bash(conda activate:*)",
+      "Bash(python:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(chmod:*)",
+      "Bash(rm:*)",
+      "Bash(/home/dreece23/miniconda3/bin/conda run -n Paper2 --no-capture-output python /mnt/c/Users/dreec/PycharmProjects/Paper2/run_analysis.py)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(diff:*)",
+      "WebFetch(domain:www.rsc.org)",
+      "Bash(cp:*)",
+      "Bash(./tools/build.sh:*)",
+      "Bash(bash:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(conda run:*)",
+      "Bash(grep:*)",
+      "Bash(git checkout:*)",
+      "Bash(echo)",
+      "WebFetch(domain:pubs.rsc.org)",
+      "Bash(touch:*)",
+      "Bash(./apply_cleanup.sh:*)",
+      "Bash(/home/dreece23/miniconda3/bin/conda run -n Paper2 --no-capture-output python analysis/SEM_Analysis/contrast_analysis.py)",
+      "Bash(/home/dreece23/miniconda3/bin/conda run -n Paper2 --no-capture-output python test_simple.py)",
+      "Bash(/home/dreece23/miniconda3/bin/conda run -n Paper2 --no-capture-output python -c \"import sys; sys.path.insert(0, ''analysis''); from AFM_Analysis.afm_analysis import run_complete_afm_analysis; print(''Import successful'')\")",
+      "Bash(/home/dreece23/miniconda3/bin/conda run -n Paper2 --no-capture-output python analysis/AFM_Analysis/afm_analysis.py)",
+      "Bash(conda info:*)"
+    ],
+    "deny": []
+  }
+}

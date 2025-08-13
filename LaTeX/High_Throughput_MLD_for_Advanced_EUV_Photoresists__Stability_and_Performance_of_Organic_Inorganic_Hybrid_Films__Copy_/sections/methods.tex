@@ -1,0 +1,39 @@
+\section{Experimental Methods}
+
+\subsection{Substrate Preparation}
+
+Silicon wafers (University Wafers) with a native oxide thickness of approximately \SI{16}{\angstrom} were diced into 1.5 x\SI{1.5}{\centi\meter\squared} squares. Substrates were cleaned using freshly prepared piranha solution (7:3 v/v, \SI{30}{\percent} \ce{H2O2} in concentrated \ce{H2SO4}) for \SI{15}{\minute}, rinsed thoroughly with deionized water, and dried under a flow of nitrogen gas. \textbf{Caution:} Piranha solution is highly corrosive and exothermic; appropriate safety precautions were observed. Surface hydroxylation induced by piranha cleaning facilitated subsequent molecular layer deposition (MLD) growth.
+
+\subsection{Precursors}
+
+Inorganic precursors were trimethylaluminum (TMA, \SI{98}{\percent}, Strem Chemicals) and diethylzinc (DEZ, \SI{98}{\percent}, Strem Chemicals). Organic diols—ethane-1,2-diol (EG), cis-2-butene-1,4-diol (CB), 2-methylene-1,3-propanediol (MPD), 1,3,4-trihydroxybenzene (THB), 1,4-butynediol (BTY), and 3,4-dihydroxy-1-butene (DHB)—were used without further purification. Precursor details including purities and suppliers are summarized in Supplementary Table S1.
+
+\subsection{Molecular Layer Deposition (MLD)}
+
+Hybrid organic–inorganic thin films were deposited using a custom-built six-chamber high-throughput MLD reactor previously described~\cite{Choe2024}. Depositions were performed at \SI{120}{\celsius}. Precursor dosing times, purge intervals, and chamber pressures were individually optimized to achieve self-limiting growth. Typical dosing pressures were approximately \SI{200}{\milli\torr} with purge pressures reduced to \SI{50}{\milli\torr}. Deposition parameters for each precursor are provided in Supplementary Table S2. Film thicknesses were controlled by adjusting the number of deposition cycles, typically targeting \SIrange{20}{80}{\nano\meter} thick films (approximately 100 cycles).
+
+\subsection{Air Stability Measurements}
+
+Film thicknesses and optical constants were measured immediately after deposition and after ambient air exposures of \SI{1}{\hour} and \SI{24}{\hour} at \SI{20}{\celsius} and \SIrange{40}{50}{\percent} relative humidity. Measurements were conducted using spectroscopic ellipsometry (AlphaSE, J.A. Woollam Co.). Thickness modeling employed either fixed-parameter Cauchy dispersion or generalized oscillator (GenOsc) models. Typical mean square error (MSE) values were approximately 1 for Cauchy-fitted films and less than 5 for GenOsc-fitted thicker films.
+
+\subsection{UV Irradiation}
+
+Samples were irradiated continuously at \SI{254}{\nano\meter} using a \SI{6}{\watt} low-pressure mercury lamp (Cole-Parmer) housed in a custom-built enclosure. The irradiance at the sample position was \SI{0.2}{\milli\joule\per\centi\meter\squared\per\second}, delivering a cumulative exposure dose of approximately \SI{16}{\joule\per\centi\meter\squared} over \SI{24}{\hour}.
+\textsc{}
+\subsection{Developer Screening}
+
+To evaluate chemical robustness, films were immersed for \SI{1}{\hour} in anhydrous organic solvents (acetone, toluene, chloroform) under nitrogen atmosphere or aqueous solutions (deionized water, \SI{0.01}{\molar} HCl, \SI{0.01}{\molar} KOH) under ambient conditions. After immersion, samples were rinsed with isopropanol and dried under nitrogen. Thicknesses and refractive indices were measured post-development. The \SI{1}{\hour} immersion was deliberately chosen as an aggressive initial screening to determine conditions capable of fully removing the films. For promising materials, developer contrast curves at reduced immersion times were subsequently generated to estimate suitable development windows.
+
+\subsection{Electron-Beam Lithography (EBL)}
+
+Electron-beam lithography was performed using a JEOL JBX-6300FS system operating at \SI{100}{\kilo\volt} and \SI{8}{\nano\ampere}. Dose-matrix patterns were exposed using electron doses ranging from \SIrange{500}{5000}{\micro\coulomb\per\centi\meter\squared}. CAD layouts for dose-matrix and box-and-grating patterns were created using LayoutEditor software and processed with BEAMER software (GenISys GmbH) to assign electron doses and prepare JEOL-compatible files. Final pattern designs, including square dose labels and line dimensions, are provided in Supplementary Figure S1.
+
+Development of exposed films was conducted in \SI{0.01}{\molar} HCl for exposure times between \SI{5}{\second} and \SI{10}{\second}, followed by rinsing with deionized water and drying under nitrogen.
+
+\subsection{Film Characterization}
+
+Film thicknesses and optical constants were measured by spectroscopic ellipsometry. Surface compositions were analyzed by X-ray photoelectron spectroscopy (XPS, Kratos Axis Ultra DLD). Infrared spectra were collected using a Thermo Scientific Nicolet iS50R Research FTIR Spectrometer equipped with an attenuated total reflectance (ATR) accessory. Surface morphology and patterning quality were examined by scanning electron microscopy (SEM, Thermo Fisher Apreo 1) and atomic force microscopy (AFM, Bruker Dimension FastScan).
+
+\subsection{Solid-State NMR}
+
+Solid-state \ce{^{13}C} NMR spectra were recorded using a Bruker AV-700 spectrometer operating at a \ce{^1H} frequency of \SI{700.38}{\mega\hertz} with a triple-resonance magic-angle spinning (MAS) probe accommodating \SI{3.2}{\milli\meter} rotors. Samples were spun at rates up to \SI{24}{\kilo\hertz}. Data were collected using TopSpin 3.7 software, with automatic tuning and matching (ATMA) and variable temperature control between \SIrange{-80}{120}{\celsius}.

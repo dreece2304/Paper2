@@ -1,0 +1,24 @@
+SEM Grating Analysis Summary
+============================
+
+Original Image: LineGrating20000-1.tif
+Dose: 20000 Gy
+
+Image Properties:
+  Pixel size: 0.01182 microns
+  Grating region: 1284 x 1479 pixels
+  Grating size: 15.1723 x 17.4765 microns
+
+Background Statistics:
+  Mean intensity: 26947.2032
+  Std deviation: 15226.9386
+
+Files saved:
+  images/
+    - LineGrating20000_grating.tif
+    - LineGrating20000_background.tif
+    - LineGrating20000_overview_with_ROIs.png
+  data/
+    - profile_dose_20000.csv
+    - metadata_dose_20000.csv
+    - ROIs_dose_20000.zip

@@ -30,14 +30,14 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent.parent
 XPS_ROOT = SCRIPT_DIR.parent
 
-# Add shared utilities to path
-sys.path.append(str(PROJECT_ROOT / 'shared'))
+# Add project root to path for imports
+sys.path.append(str(PROJECT_ROOT))
 
 try:
-    from utils.plot_styles import set_plot_style
-    from utils.helpers import create_figure, save_figure
-    from utils.config import viridis, color_asdeposited, color_uvtreated, fig_width_cm, aspect_ratio_standard
-    from utils.xps_utils import (
+    from shared.utils.plot_styles import set_plot_style
+    from shared.utils.helpers import create_figure, save_figure
+    from shared.utils.config import viridis, color_asdeposited, color_uvtreated, fig_width_cm, aspect_ratio_standard
+    from shared.utils.xps_utils import (
         validate_xps_data,
         background_subtract_normalize,
         get_xps_colors,
@@ -50,6 +50,9 @@ except ImportError as e:
     print(f"✗ Error importing shared utilities: {e}")
     print("Make sure you have the shared folder set up correctly")
     sys.exit(1)
+
+# Set global plot style
+set_plot_style()
 
 
 def process_xps_file(filepath):
@@ -296,24 +299,7 @@ def plot_xps_publication_figure_improved(all_dataframes, save_plots=True):
     - Professional styling
     """
 
-    # Apply reasonable styling for display
-    plt.rcParams.update({
-        'font.size': 10,
-        'axes.titlesize': 12,
-        'axes.labelsize': 11,
-        'xtick.labelsize': 9,
-        'ytick.labelsize': 9,
-        'legend.fontsize': 9,
-        'figure.dpi': 100,  # Lower DPI for faster display
-        'savefig.dpi': 300,  # Higher DPI only for saving
-        'axes.linewidth': 1.5,
-        'xtick.top': True,
-        'xtick.bottom': True,
-        'ytick.left': True,
-        'ytick.right': True,
-        'xtick.direction': 'in',
-        'ytick.direction': 'in',
-    })
+    # Use shared project styling (already set via set_plot_style())
 
     # Sample information
     sample_order = ['BTY_AD', 'BTY_UV', 'BTY_H2O']
@@ -321,8 +307,8 @@ def plot_xps_publication_figure_improved(all_dataframes, save_plots=True):
     regions = ['O 1s', 'C 1s', 'Al 2p']
     panel_labels = ['(a)', '(b)', '(c)']
 
-    # Create reasonably sized figure for display and processing
-    fig_width_in = 12  # Reasonable width in inches
+    # Create compressed figure for display and processing
+    fig_width_in = 9  # Reduced from 12 to compress horizontally
     fig_height_in = 4  # Good height for 3 panels
     fig, axes = plt.subplots(1, 3, figsize=(fig_width_in, fig_height_in))
 
@@ -398,14 +384,32 @@ def plot_xps_publication_figure_improved(all_dataframes, save_plots=True):
                             fit_data = region_df[fit_col].values
                             # Use same normalization factor to preserve relative intensities
                             normalized_fit = normalize_spectrum_preserving_ratios(fit_data, background_data, norm_factor)
-                            fit_y = normalized_fit + y_offset
                             
-                            # Find peak position for this fit component
-                            max_idx = np.argmax(normalized_fit)
-                            peak_be = be_values[max_idx]
+                            # IMPROVED: More stringent validation for actual peaks
+                            # Check if this is a real peak vs. background/baseline artifact
+                            max_intensity = np.max(normalized_fit)
+                            mean_intensity = np.mean(normalized_fit)
                             
-                            # Simple: 1st peak = color 1, 2nd peak = color 2, etc.
-                            if np.max(normalized_fit) > 0.01:
+                            # Only plot if this looks like an actual peak:
+                            # 1. Peak height > 5% of normalized scale (was 1%)
+                            # 2. Peak is significantly above mean (not just baseline)
+                            # 3. Peak has reasonable width (not just a spike)
+                            peak_threshold = 0.05  # Increased from 0.01
+                            signal_to_noise = max_intensity / (mean_intensity + 1e-6)  # Avoid division by zero
+                            
+                            # Count significant data points above threshold
+                            significant_points = np.sum(normalized_fit > peak_threshold)
+                            min_peak_width = 3  # Minimum number of points for a valid peak
+                            
+                            # Always plot all fit components for consistent appearance
+                            if np.max(normalized_fit) > 0.01:  # Basic check for non-zero data
+                                
+                                fit_y = normalized_fit + y_offset
+                                
+                                # Find peak position for this fit component
+                                max_idx = np.argmax(normalized_fit)
+                                peak_be = be_values[max_idx]
+                                
                                 # Find this peak's order in the sorted list
                                 peak_order = next((idx for idx, (be, orig_i, col, _) in enumerate(fit_peaks) 
                                                  if orig_i == i), 0)
@@ -414,23 +418,27 @@ def plot_xps_publication_figure_improved(all_dataframes, save_plots=True):
                                 else:
                                     # Fallback for more than 6 peaks
                                     peak_color = viridis_cmap(0.5)
+
+                                # Calculate z-order: higher BE (rightmost) peaks in front
+                                # Reverse the order so rightmost peaks have higher z-order
+                                base_zorder = 10
+                                fill_zorder = base_zorder - peak_order  # Higher BE = higher z-order
+                                line_zorder = fill_zorder + len(fit_peaks)  # Lines always above fills
+
+                                # Fill between baseline and fit curve (no edge lines for clean look)
+                                ax.fill_between(be_values, y_offset, fit_y,
+                                                color=peak_color, alpha=0.6,
+                                                edgecolor='none',
+                                                zorder=fill_zorder)
+                                fit_plotted = True
+                                
+                                # Debug output for problematic cases
+                                if region == 'C 1s' and sample_key == 'BTY_AD':
+                                    print(f"  DEBUG: {fit_col} - max: {max_intensity:.3f}, S/N: {signal_to_noise:.2f}, points: {significant_points}, BE: {peak_be:.1f}")
                             else:
-                                # Default color for very small peaks
-                                peak_color = viridis_cmap(0.5)
-
-                            # Fill between baseline and fit with appropriate color
-                            # Only fill where the fit is above the baseline
-                            fill_mask = normalized_fit > 0.01  # Small threshold to avoid near-zero fills
-                            if np.any(fill_mask):
-                                ax.fill_between(be_values[fill_mask], y_offset, fit_y[fill_mask],
-                                                color=peak_color, alpha=0.5,  # Reduced alpha for better differentiation
-                                                edgecolor=peak_color, linewidth=0.8, zorder=2)
-
-                            # Plot fit line
-                            ax.plot(be_values, fit_y, '-',
-                                    color=peak_color, linewidth=1.0,
-                                    alpha=0.9, zorder=3)
-                            fit_plotted = True
+                                # Debug output for rejected peaks
+                                if region == 'C 1s' and sample_key == 'BTY_AD':
+                                    print(f"  SKIPPED: {fit_col} - max: {max_intensity:.3f}, S/N: {signal_to_noise:.2f}, points: {significant_points} (below threshold)")
 
                     # Envelope line - more visible
                     envelope_y = normalized_envelope + y_offset
@@ -519,7 +527,7 @@ def plot_xps_publication_figure_improved(all_dataframes, save_plots=True):
                     x_position = 532  # Fallback
                 
                 ax.text(x_position, y_position, sample_label,
-                        fontsize=8, fontweight='bold',  # Smaller font
+                        fontweight='bold',
                         ha='center', va='center',  # Center alignment
                         color='black',
                         bbox=dict(boxstyle='round,pad=0.2', 
@@ -528,13 +536,15 @@ def plot_xps_publication_figure_improved(all_dataframes, save_plots=True):
                                   edgecolor=sample_colors[sample_idx],
                                   linewidth=1.2))
 
-        # FIXED: Major and minor ticks on ALL axes
-        ax.tick_params(axis='both', which='major', direction='in',
-                       top=True, right=True, bottom=True, left=True,
+        # FIXED: Major and minor ticks on horizontal axes only
+        ax.tick_params(axis='x', which='major', direction='in',
+                       top=True, bottom=True,
                        length=6, width=1.2)
-        ax.tick_params(axis='both', which='minor', direction='in',
-                       top=True, right=True, bottom=True, left=True,
+        ax.tick_params(axis='x', which='minor', direction='in',
+                       top=True, bottom=True,
                        length=3, width=0.8)
+        # Remove y-axis ticks
+        ax.tick_params(axis='y', which='both', left=False, right=False)
 
         # Set clean, professional tick marks for each region with consistent 2 eV intervals
         if region == 'O 1s':
@@ -566,7 +576,7 @@ def plot_xps_publication_figure_improved(all_dataframes, save_plots=True):
         # Add panel label (a, b, c) in top-left corner inside axes
         ax.text(0.05, 0.95, panel_labels[col_idx], 
                 transform=ax.transAxes,
-                fontsize=12, fontweight='bold',
+                fontweight='bold',
                 ha='left', va='top',
                 bbox=dict(boxstyle='round,pad=0.3', 
                           facecolor='white',
@@ -575,9 +585,9 @@ def plot_xps_publication_figure_improved(all_dataframes, save_plots=True):
 
     # Remove legend from main figure - will create separately
 
-    # Clean layout
+    # Clean layout - more compact
     plt.tight_layout()
-    plt.subplots_adjust(wspace=0.25)
+    plt.subplots_adjust(wspace=0.15)  # Reduced from 0.25 to compress horizontally
 
     # Save main figure
     if save_plots:
@@ -587,7 +597,9 @@ def plot_xps_publication_figure_improved(all_dataframes, save_plots=True):
         
         save_figure(fig, "XPS_publication_figure_final",
                     folder=str(figures_dir),
-                    formats=("pdf", "png", "svg"))
+                    formats=("tiff", "pdf", "png"),
+                    dpi=600)
+        save_for_latex(fig, "XPS_publication_figure_final")
         
         # Create separate legend figure
         create_separate_legend(save_plots)
@@ -649,7 +661,9 @@ def create_separate_legend(save_plots=True):
         
         save_figure(legend_fig, "XPS_legend",
                     folder=str(figures_dir),
-                    formats=("pdf", "png", "svg"))
+                    formats=("tiff", "pdf", "png"),
+                    dpi=600)
+        save_for_latex(legend_fig, "XPS_legend")
     
     return legend_fig
 
@@ -723,6 +737,26 @@ def generate_summary_report(all_dataframes):
         return None
 
 
+# Old main function removed - using the corrected version below
+
+# === LaTeX TIFF Figure Generation ===
+latex_figures_dir = Path("/mnt/c/Users/dreec/PycharmProjects/Paper2/LaTeX/High_Throughput_MLD_for_Advanced_EUV_Photoresists__Stability_and_Performance_of_Organic_Inorganic_Hybrid_Films__Copy_/Figures")
+latex_figures_dir.mkdir(exist_ok=True)
+print(f"📁 LaTeX figures will be saved to: {latex_figures_dir}")
+
+def save_for_latex(fig, filename, include_pdf=True):
+    """Save figure in TIFF format for LaTeX, with optional PDF."""
+    # Save to LaTeX directory
+    saved_files = save_figure(
+        fig, filename, 
+        folder=latex_figures_dir,
+        formats=("tiff",), 
+        include_pdf=include_pdf,
+        dpi=600
+    )
+    print(f"✅ LaTeX figure saved: {filename}.tiff")
+    return saved_files
+
 def main():
     """Main function for publication-quality XPS analysis"""
     print("XPS Analysis Script - PUBLICATION QUALITY")
@@ -738,8 +772,8 @@ def main():
     print(f"\nRunning from: {Path.cwd()}")
     print(f"XPS root directory: {XPS_ROOT}")
 
-    # Check data directory
-    data_dir = XPS_ROOT / "data" / "raw"
+    # Check data directory - use processed directory with Excel files
+    data_dir = XPS_ROOT / "data" / "processed"
     if not data_dir.exists():
         print(f"✗ Data directory not found: {data_dir}")
         return
@@ -767,7 +801,7 @@ def main():
         return
 
     print(f"\n🔄 Processing {len(existing_files)} files...")
-
+    
     # Process files
     all_dataframes = {}
     for filepath in existing_files:
@@ -811,35 +845,6 @@ def main():
         print(f"❌ Error creating figure: {str(e)}")
         import traceback
         traceback.print_exc()
-
-    # Generate summary
-    print(f"\n📈 Generating summary analysis...")
-    try:
-        summary_df = generate_summary_report(all_dataframes)
-        if summary_df is not None:
-            print("✅ Summary analysis completed")
-    except Exception as e:
-        print(f"❌ Error in summary analysis: {str(e)}")
-
-    # Export data
-    print(f"\n💾 Exporting processed data...")
-    try:
-        processed_dir = XPS_ROOT / "data" / "processed"
-        export_spectral_data(all_dataframes, output_dir=str(processed_dir))
-        print("✅ Processed data exported")
-    except Exception as e:
-        print(f"❌ Error exporting data: {str(e)}")
-
-    print("\n" + "=" * 55)
-    print("🎉 PUBLICATION-QUALITY XPS Analysis Complete!")
-    print("=" * 55)
-    print("✨ Publication-standard features applied:")
-    print("  📏 Journal-standard dimensions (18.3cm double column)")
-    print("  🔧 Quantitative normalization for accurate comparison")
-    print("  📈 High-resolution output (600 DPI)")
-    print("  🎨 Colorblind-friendly, professional color schemes")
-    print("  📊 Publication-quality typography and formatting")
-    print("  📁 Multiple formats: PDF, SVG, EPS for journals")
 
 
 if __name__ == "__main__":

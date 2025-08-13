@@ -1,0 +1,13 @@
+SEM Feature Extraction Info
+===========================
+Image: LowDoseSquares.tif
+Matrix type: LowDoseSquares
+Feature type: Square Matrix
+Label extracted: Yes
+
+Files created:
+  - LowDoseSquares_feature.tif
+  - LowDoseSquares_background.tif
+  - LowDoseSquares_label.tif
+  - LowDoseSquares_overview_with_ROIs.png
+  - ROIs_LowDoseSquares.zip

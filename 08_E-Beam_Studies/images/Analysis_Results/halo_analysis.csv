@@ -1,0 +1,4 @@
+ ,Filename,Dose_uC_cm2,Mean,StdDev,Min,Max,Area_pixels,Diameter_pixels,Center_Intensity,Edge_Intensity,Decay_Rate
+1,Dose_10000uC_Halo.tif,10000,163.744,25.5746,75,255,23864,152,159.1044,159.5592,-0.01137
+2,Dose_15000uC_Halo.tif,15000,157.5171,27.9648,68,253,29068,169,143.3956,146.0737,-0.06695
+3,Dose_20000uC_Halo.tif,20000,137.8849,28.6826,57,250,34587,183,122.8133,123.3372,-0.0131

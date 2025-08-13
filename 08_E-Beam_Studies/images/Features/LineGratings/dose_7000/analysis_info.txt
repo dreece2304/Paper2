@@ -1,0 +1,24 @@
+SEM Grating Analysis Summary
+============================
+
+Original Image: LineGrating7000-1.tif
+Dose: 7000 Gy
+
+Image Properties:
+  Pixel size: 0.0003255 inches
+  Grating region: 1107 x 1380 pixels
+  Grating size: 0.3604 x 16.3066 inches
+
+Background Statistics:
+  Mean intensity: 40010.3063
+  Std deviation: 15184.5653
+
+Files saved:
+  images/
+    - LineGrating7000_grating.tif
+    - LineGrating7000_background.tif
+    - LineGrating7000_overview_with_ROIs.png
+  data/
+    - profile_dose_7000.csv
+    - metadata_dose_7000.csv
+    - ROIs_dose_7000.zip
